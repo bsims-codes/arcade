@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VMK Arcade Room</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Arcade Stage (800x600) -->
+  <div id="stage">
+    <img src="arcade-background.jpg" alt="Arcade Room" id="background">
+    <div id="hotspots"></div>
+
+    <!-- Tooltip -->
+    <div id="tooltip" class="hidden"></div>
+
+    <!-- Debug overlay for placement mode -->
+    <div id="debug-overlay" class="hidden">
+      <span>Placement Mode (Press P to toggle)</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>VMK Arcade Demo – click a machine to play. <span class="hint">(Press P for placement mode)</span></footer>
+
+  <!-- Modal Overlay -->
+  <div id="modal-overlay" class="hidden">
+    <div id="modal">
+      <div id="modal-header">
+        <span id="modal-title">Game</span>
+        <button id="modal-close" aria-label="Close">&times;</button>
+      </div>
+      <div id="modal-content">
+        <!-- Loading indicator -->
+        <div id="loading">
+          <div class="spinner"></div>
+          <p>Loading game...</p>
+        </div>
+
+        <!-- Error state -->
+        <div id="error" class="hidden">
+          <p>This game can't be embedded.</p>
+          <a id="fallback-link" href="#" target="_blank" rel="noopener">Open in a new tab →</a>
+        </div>
+
+        <!-- Game iframe -->
+        <iframe id="game-iframe" title="Game" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+      </div>
+      <div id="modal-footer">
+        <a id="external-link" href="#" target="_blank" rel="noopener">Open in new tab</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
