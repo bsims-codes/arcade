@@ -178,6 +178,9 @@ function openModal(machine) {
   modalOverlay.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
 
+  // Scale modal for current viewport
+  updateModalScale();
+
   // Focus management
   modalClose.focus();
 
@@ -313,9 +316,66 @@ modal.addEventListener('keydown', (e) => {
 });
 
 // =============================================================================
+// RESPONSIVE SCALING
+// =============================================================================
+const STAGE_WIDTH = 800;
+const STAGE_HEIGHT = 600;
+const MODAL_WIDTH = 900;
+const MODAL_HEIGHT = 700 + 47 + 41; // content + header + footer approx
+
+function updateStageScale() {
+  const padding = 40; // padding from viewport edges
+  const availableWidth = window.innerWidth - padding;
+  const availableHeight = window.innerHeight - padding - 60; // 60 for footer
+
+  const scaleX = availableWidth / STAGE_WIDTH;
+  const scaleY = availableHeight / STAGE_HEIGHT;
+  const scale = Math.min(scaleX, scaleY, 1); // Don't scale up, only down
+
+  if (scale < 1) {
+    stage.style.transform = `scale(${scale})`;
+    stage.style.marginBottom = `${-(STAGE_HEIGHT * (1 - scale))}px`;
+  } else {
+    stage.style.transform = '';
+    stage.style.marginBottom = '';
+  }
+}
+
+function updateModalScale() {
+  const padding = 20;
+  const availableWidth = window.innerWidth - padding;
+  const availableHeight = window.innerHeight - padding;
+
+  const scaleX = availableWidth / MODAL_WIDTH;
+  const scaleY = availableHeight / MODAL_HEIGHT;
+  const scale = Math.min(scaleX, scaleY, 1); // Don't scale up, only down
+
+  if (scale < 1) {
+    modal.style.transform = `scale(${scale})`;
+  } else {
+    modal.style.transform = '';
+  }
+}
+
+function handleResize() {
+  updateStageScale();
+  if (!modalOverlay.classList.contains('hidden')) {
+    updateModalScale();
+  }
+}
+
+// Listen for resize and orientation change
+window.addEventListener('resize', handleResize);
+window.addEventListener('orientationchange', () => {
+  // Small delay to let orientation change complete
+  setTimeout(handleResize, 100);
+});
+
+// =============================================================================
 // INITIALIZE
 // =============================================================================
 renderHotspots();
+updateStageScale(); // Initial scale check
 
 console.log('VMK Arcade Room loaded!');
 console.log('Press P to toggle placement mode for adjusting hotspot positions.');
