@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 180" fill="none" style="background:transparent">
+  <!-- Arcade Cabinet - Green/Teal theme for The Swan -->
+
+  <!-- Cabinet base/legs -->
+  <rect x="15" y="160" width="20" height="20" fill="#134e4a" rx="2"/>
+  <rect x="85" y="160" width="20" height="20" fill="#134e4a" rx="2"/>
+
+  <!-- Main cabinet body -->
+  <rect x="10" y="40" width="100" height="125" fill="#14b8a6" rx="4"/>
+
+  <!-- Cabinet side shadow -->
+  <rect x="100" y="40" width="10" height="125" fill="#0d9488" rx="0 4 4 0"/>
+
+  <!-- Screen bezel -->
+  <rect x="18" y="48" width="84" height="65" fill="#1e1e2e" rx="3"/>
+
+  <!-- Screen -->
+  <rect x="22" y="52" width="76" height="57" fill="#0f172a" rx="2"/>
+
+  <!-- Screen glow effect -->
+  <rect x="22" y="52" width="76" height="57" fill="url(#screenGlow-teal)" rx="2"/>
+
+  <!-- Water/waves effect -->
+  <path d="M22 95 Q35 90 48 95 T74 95 T98 95 L98 109 L22 109 Z" fill="#0d9488" opacity="0.3"/>
+  <path d="M22 100 Q35 95 48 100 T74 100 T98 100 L98 109 L22 109 Z" fill="#14b8a6" opacity="0.2"/>
+
+  <!-- Swan silhouette -->
+  <ellipse cx="60" cy="82" rx="12" ry="8" fill="#f0fdfa" opacity="0.8"/>
+  <path d="M68 82 Q75 78 76 70 Q77 65 74 63 Q72 62 70 64 Q68 68 68 75 Q68 78 68 82" fill="#f0fdfa" opacity="0.8"/>
+  <circle cx="73" cy="65" r="1.5" fill="#0f172a"/>
+
+  <!-- Lily pads -->
+  <ellipse cx="38" cy="88" rx="6" ry="3" fill="#22c55e" opacity="0.6"/>
+  <ellipse cx="82" cy="90" rx="5" ry="2.5" fill="#22c55e" opacity="0.5"/>
+
+  <!-- Marquee top -->
+  <rect x="10" y="20" width="100" height="25" fill="#0d9488" rx="4 4 0 0"/>
+  <rect x="10" y="20" width="100" height="8" fill="#2dd4bf" rx="4 4 0 0"/>
+
+  <!-- Marquee text area -->
+  <rect x="18" y="26" width="84" height="14" fill="#115e59" rx="2"/>
+  <text x="60" y="37" font-family="Arial, sans-serif" font-size="9" font-weight="bold" fill="#99f6e4" text-anchor="middle">THE SWAN</text>
+
+  <!-- Control panel -->
+  <rect x="18" y="118" width="84" height="40" fill="#115e59" rx="3"/>
+
+  <!-- Joystick base -->
+  <ellipse cx="45" cy="138" rx="12" ry="8" fill="#0f172a"/>
+  <ellipse cx="45" cy="136" rx="8" ry="5" fill="#334155"/>
+  <!-- Joystick stick -->
+  <rect x="43" y="125" width="4" height="12" fill="#1e293b" rx="2"/>
+  <circle cx="45" cy="123" r="5" fill="#ef4444"/>
+
+  <!-- Buttons -->
+  <circle cx="75" cy="130" r="7" fill="#2dd4bf"/>
+  <circle cx="90" cy="135" r="7" fill="#34d399"/>
+
+  <!-- Coin slot area -->
+  <rect x="40" y="152" width="40" height="8" fill="#115e59" rx="2"/>
+  <rect x="52" y="154" width="16" height="4" fill="#0f172a" rx="1"/>
+
+  <!-- Gradient definitions -->
+  <defs>
+    <linearGradient id="screenGlow-teal" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#14b8a6;stop-opacity:0.1" />
+      <stop offset="100%" style="stop-color:#0f766e;stop-opacity:0.2" />
+    </linearGradient>
+  </defs>
+</svg>

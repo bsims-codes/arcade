@@ -14,9 +14,10 @@ const machines = [
     label: 'Bubbles',
     hoverTooltip: 'Play Bubbles!',
     url: 'https://bsims-codes.github.io/myvmk-bubbles/',
+    image: 'machine-bubbles.svg',
     // Adjust these coordinates to match your image:
     x: 50,
-    y: 150,
+    y: 300,
     width: 120,
     height: 180
   },
@@ -25,6 +26,7 @@ const machines = [
     label: "Tink's Hex",
     hoverTooltip: "Play Tink's Hex!",
     url: 'https://bsims-codes.github.io/TinksHex/',
+    image: 'machine-hex.svg',
     // Adjust these coordinates to match your image:
     x: 220,
     y: 150,
@@ -36,6 +38,7 @@ const machines = [
     label: 'The Swan',
     hoverTooltip: 'Play The Swan!',
     url: 'https://bsims-codes.github.io/the-swan/',
+    image: 'machine-swan.svg',
     // Adjust these coordinates to match your image:
     x: 460,
     y: 150,
@@ -47,9 +50,10 @@ const machines = [
     label: 'Cup Shuffle',
     hoverTooltip: 'Play Cup Shuffle!',
     url: 'https://bsims-codes.github.io/cup-shuffle/',
+    image: 'machine-cups.svg',
     // Adjust these coordinates to match your image:
     x: 630,
-    y: 150,
+    y: 350,
     width: 120,
     height: 180
   }
@@ -100,6 +104,16 @@ function renderHotspots() {
     hotspot.style.top = `${machine.y}px`;
     hotspot.style.width = `${machine.width}px`;
     hotspot.style.height = `${machine.height}px`;
+
+    // Add arcade machine image
+    if (machine.image) {
+      const img = document.createElement('img');
+      img.src = machine.image;
+      img.alt = machine.label;
+      img.className = 'machine-image';
+      img.draggable = false;
+      hotspot.appendChild(img);
+    }
 
     // Event listeners
     hotspot.addEventListener('mouseenter', (e) => showTooltip(e, machine));

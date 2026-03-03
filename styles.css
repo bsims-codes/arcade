@@ -51,6 +51,8 @@ body {
   border: 2px solid transparent;
   border-radius: 4px;
   transition: all 0.2s ease;
+  background: transparent;
+  padding: 0;
 }
 
 .hotspot:hover {
@@ -62,6 +64,20 @@ body {
 .hotspot:focus {
   outline: 2px solid #fff;
   outline-offset: 2px;
+}
+
+/* Machine images inside hotspots */
+.machine-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  pointer-events: none;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.hotspot:hover .machine-image {
+  transform: scale(1.05);
+  filter: brightness(1.15) drop-shadow(0 0 10px rgba(255, 255, 100, 0.5));
 }
 
 /* Debug mode - show hotspot boundaries */
@@ -202,8 +218,8 @@ footer .hint {
 
 #modal-content {
   position: relative;
-  width: 800px;
-  height: 600px;
+  width: 900px;
+  height: 700px;
   background: #1a1a2e;
 }
 
