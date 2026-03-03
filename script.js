@@ -320,17 +320,20 @@ modal.addEventListener('keydown', (e) => {
 // =============================================================================
 const STAGE_WIDTH = 800;
 const STAGE_HEIGHT = 600;
-const MODAL_WIDTH = 900;
-const MODAL_HEIGHT = 700 + 47 + 41; // content + header + footer approx
+const MODAL_CONTENT_WIDTH = 900;
+const MODAL_CONTENT_HEIGHT = 700;
+const MODAL_HEADER_HEIGHT = 47;
+const MODAL_FOOTER_HEIGHT = 41;
+const MODAL_TOTAL_HEIGHT = MODAL_CONTENT_HEIGHT + MODAL_HEADER_HEIGHT + MODAL_FOOTER_HEIGHT;
 
 function updateStageScale() {
-  const padding = 40; // padding from viewport edges
+  const padding = 40;
   const availableWidth = window.innerWidth - padding;
-  const availableHeight = window.innerHeight - padding - 60; // 60 for footer
+  const availableHeight = window.innerHeight - padding - 60;
 
   const scaleX = availableWidth / STAGE_WIDTH;
   const scaleY = availableHeight / STAGE_HEIGHT;
-  const scale = Math.min(scaleX, scaleY, 1); // Don't scale up, only down
+  const scale = Math.min(scaleX, scaleY, 1);
 
   if (scale < 1) {
     stage.style.transform = `scale(${scale})`;
@@ -346,14 +349,29 @@ function updateModalScale() {
   const availableWidth = window.innerWidth - padding;
   const availableHeight = window.innerHeight - padding;
 
-  const scaleX = availableWidth / MODAL_WIDTH;
-  const scaleY = availableHeight / MODAL_HEIGHT;
-  const scale = Math.min(scaleX, scaleY, 1); // Don't scale up, only down
+  // Calculate scale needed to fit
+  const scaleX = availableWidth / MODAL_CONTENT_WIDTH;
+  const scaleY = availableHeight / MODAL_TOTAL_HEIGHT;
+  const scale = Math.min(scaleX, scaleY, 1);
 
+  // Apply scale and adjust the wrapper dimensions
   if (scale < 1) {
+    // Scale the modal
     modal.style.transform = `scale(${scale})`;
+
+    // Calculate the actual rendered size
+    const scaledWidth = MODAL_CONTENT_WIDTH * scale;
+    const scaledHeight = MODAL_TOTAL_HEIGHT * scale;
+
+    // Set wrapper dimensions so flexbox centering works correctly
+    modal.style.width = `${MODAL_CONTENT_WIDTH}px`;
+    modal.style.height = `${MODAL_TOTAL_HEIGHT}px`;
+    modal.style.margin = `${-(MODAL_TOTAL_HEIGHT - scaledHeight) / 2}px ${-(MODAL_CONTENT_WIDTH - scaledWidth) / 2}px`;
   } else {
     modal.style.transform = '';
+    modal.style.width = '';
+    modal.style.height = '';
+    modal.style.margin = '';
   }
 }
 
@@ -367,8 +385,7 @@ function handleResize() {
 // Listen for resize and orientation change
 window.addEventListener('resize', handleResize);
 window.addEventListener('orientationchange', () => {
-  // Small delay to let orientation change complete
-  setTimeout(handleResize, 100);
+  setTimeout(handleResize, 150);
 });
 
 // =============================================================================
