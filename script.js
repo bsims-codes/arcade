@@ -26,7 +26,7 @@ const machines = [
     label: "Tink's Hex",
     hoverTooltip: "Play Tink's Hex!",
     url: 'https://bsims-codes.github.io/TinksHex/',
-    image: 'machine-hex.svg',
+    image: 'FrontTinks_Hex2.png',
     // Adjust these coordinates to match your image:
     x: 220,
     y: 150,
@@ -38,7 +38,7 @@ const machines = [
     label: 'The Swan',
     hoverTooltip: 'Play The Swan!',
     url: 'https://bsims-codes.github.io/the-swan/',
-    image: 'machine-swan.svg',
+    image: 'swan-arcade-machine.png',
     // Adjust these coordinates to match your image:
     x: 460,
     y: 150,
@@ -46,11 +46,11 @@ const machines = [
     height: 180
   },
   {
-    id: 'cup-shuffle',
-    label: 'Cup Shuffle',
-    hoverTooltip: 'Play Cup Shuffle!',
+    id: 'dinner-with-yzma',
+    label: 'Dinner with Yzma',
+    hoverTooltip: 'Play Dinner with Yzma!',
     url: 'https://bsims-codes.github.io/cup-shuffle/',
-    image: 'machine-cups.svg',
+    image: 'dinner-with-yzma-arcade-machine.png',
     // Adjust these coordinates to match your image:
     x: 630,
     y: 350,
